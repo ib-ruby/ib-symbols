@@ -1,0 +1,12 @@
+---
+:testcontract: !ruby/object:IB::Stock
+  attributes:
+    :symbol: GE
+    :con_id: 0
+    :exchange: SMART
+    :currency: USD
+    :sec_type: STK
+    :created_at: 2020-10-06 09:21:29.457747233 +00:00
+    :right: ''
+    :include_expired: false
+  description: 'Stock: GE USD'
