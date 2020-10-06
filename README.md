@@ -1,5 +1,6 @@
 # ib-symbols
-Enables predefined symbols and watchlists for contracts
+
+Predefined symbols and watchlists for contracts
 
 to activate use
 
