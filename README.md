@@ -1,10 +1,11 @@
 # ib-symbols
-Enables predefined symbols and watchlists for contracts
+
+Predefined symbols and watchlists for contracts
 
 to activate use
 
 ```
-gem 'ib-symbols',  git: 'https://github.com/ib-ruby/ib-api.git'
+gem 'ib-symbols',  git: 'https://github.com/ib-ruby/ib-symbols.git'
 ```
 in the Gemfile and 
 ```
