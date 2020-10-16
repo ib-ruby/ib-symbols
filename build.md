@@ -2,7 +2,7 @@ Process of separation from ib-ruby
 ==================================
 
 * Create the gem with bundle  
-  _bundle gem ib-symbols  
+  `bundle gem ib-symbols` 
 
 * Move essential files from ib-ruby  
   Source is `lib/ib/symbols` and `lib/ib/symbols_base.rb`

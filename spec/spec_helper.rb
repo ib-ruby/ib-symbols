@@ -4,6 +4,8 @@ require 'bundler/setup'
 require 'rspec'
 require 'rspec/its'
 require 'rspec/collection_matchers'
+require 'rspec/expectations'
+require "ib-api"
 require "ib/symbols"
 require 'pp'
 require 'yaml'

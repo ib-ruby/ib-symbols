@@ -3,6 +3,7 @@
 # This script connects to IB API and subscribes to market data for specific symbols
 
 require 'bundler/setup'
+require 'ib-api'
 require 'ib/symbols'
 
 COUNT_OF_EVENTS =  20
