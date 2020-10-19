@@ -9,6 +9,7 @@ gem 'ib-symbols',  git: 'https://github.com/ib-ruby/ib-symbols.git'
 ```
 in the Gemfile and 
 ```
+require 'ib-api'
 require 'ib/symbols'
 ```
 in your script
@@ -32,7 +33,7 @@ By default, Watchlists reside in the `symbols`-directory of `ib-symbols`. This c
 Everything is kept elementary simple: Collections are stored as editable files. The format is YAML. 
 
 The CRUD Cycle
-```
+```ruby
 > IB::Symbols.allocate_collection :Demo
  => IB::Symbols::Demo               # file /symbols/Demo is created and Modul is established
 > IB::Symbols::Demo.add_contract :uso , IB::Stock.new( symbol: 'USO' )
@@ -51,3 +52,26 @@ The CRUD Cycle
 head :012 > IB::Symbols::Demo.all
  => [] 
 ```
+
+## Pattern based Contract retrieval
+
+To specify a specific Option can be a boaring job. 
+You might spend hours searching for a simple error, like a forgotten `:currency` oder `:exchange` entry.
+
+Symbol-Collections can be used as template for everyday searches.
+
+> Example: Customize a Index-Option with quaterly expiry.
+>
+> The hard coded `Symbols::Options.stoxx` template ensures the retrieval of only one option.
+> A simple merge with customized attributes  returns a fully qualified ContractRecord.
+
+
+```ruby
+> IB::Symbols.Options.stoxx.to_human
+ => "<Option: ESTX50 202012 put 3000.0 DTB EUR>" 
+> Symbols::Options.stoxx.merge( strike: 3300, right: :call).to_human
+ => "<Option: ESTX50 202012 call 3300.0 DTB EUR>" 
+
+```
+
+
