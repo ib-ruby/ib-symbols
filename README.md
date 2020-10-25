@@ -53,6 +53,27 @@ head :012 > IB::Symbols::Demo.all
  => [] 
 ```
 
+## Predefined Collections
+
+Most popular `Stocks`, `Options`, `Futures`, `Indices` and `Forex-pairs` are hard-coded.
+```ruby
+> IB::Symbols::Index.all
+ => [:a_d, :asx, :dax, :hsi, :minihsi, :spx, :stoxx, :tick, :trin, :vasx, :vdax, :vhsi, :vix, :volume, :vstoxx] 
+> puts IB::Symbols::Index.contracts.values &.to_human
+  <Index: DAX EUR (DAX Performance Index.) >
+  <Index: AP AUD (ASX 200 Index) >
+  <Index: HSI HKD (Hang Seng Index) >
+  (...)
+  <Index: AD-NYSE  (NYSE Advance Decline Index) >
+
+> Symbols::Forex.eurusd.to_human
+ => "<Contract: EUR forex IDEALPRO USD>"
+# this contract is valid and can be verified, but the opposide is not supported by IB
+> Symbols::Forex.usdeur.verify
+TWS Error 200: No security definition has been found for the request
+Not a valid Contract :: <Contract: USD forex IDEALPRO EUR>
+```
+
 ## Pattern based Contract retrieval
 
 To specify a specific Option can be a boaring job. 
