@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Predefined symbols and watchlist, part of ib-ruby}
   spec.description   = %q{Easy access to most common contracts through templates, define watchlists to perfrom bulk operations}
-  spec.homepage      = "https://github.com/ib-ruby/"
+  spec.homepage      = "https://ib-ruby.github.io/ib-doc/"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
 
 #  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
