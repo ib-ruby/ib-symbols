@@ -5,7 +5,7 @@ Predefined symbols and watchlists for contracts
 to activate use
 
 ```
-gem 'ib-symbols',  git: 'https://github.com/ib-ruby/ib-symbols.git'
+gem 'ib-symbols'
 ```
 in the Gemfile and 
 ```
