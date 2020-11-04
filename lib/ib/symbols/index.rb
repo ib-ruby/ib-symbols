@@ -1,5 +1,4 @@
 # Frequently used stock contracts definitions
-# TODO: auto-request :ContractDetails from IB if unknown symbol is requested?
 module IB
   module Symbols
     module Index
@@ -15,19 +14,19 @@ module IB
 																		:description => "Hang Seng Index" ),
 				 :minihsi => IB::Index.new( :symbol  => 'MHI', :currency => 'HKD', exchange: 'HKFE',
 																		:description => "Mini Hang Seng Index" ),
-		     :stoxx => IB::Index.new(:symbol => "Estx50", :currency => "EUR", exchange: 'DTB',
+		     :stoxx => IB::Index.new(:symbol => "ESTX50", :currency => "EUR", exchange: 'DTB',
                                     :description => "Dow Jones Euro STOXX50"),
 		     :spx => IB::Index.new(:symbol => "SPX", :currency => "USD", exchange: 'CBOE',
                                     :description => "Dow Jones Euro STOXX50"),
-				 :vhsi =>  IB::Index.new( symbol: 'VHSI',
+				 :vhsi =>  IB::Index.new( symbol: 'VHSI', exchange: 'HKFE',
 																		:description => "Hang Seng Volatility Index"),
-				 :vasx  =>  IB::Index.new( symbol: 'XVI', 
+				 :vasx  =>  IB::Index.new( symbol: 'XVI',   exchange: 'ASX',
 																		:description => "ASX 200 Volatility Index")	, 													
 		     :vstoxx => IB::Index.new(:symbol => "V2TX", :currency => "EUR", exchange: 'DTB',
                                     :description => "VSTOXX Volatility Index"),
-		     :vdax => IB::Index.new(:symbol => "VDAX",
+		     :vdax => IB::Index.new(:symbol => "VDAX", exchange: 'DTB',
                                     :description => "German VDAX Volatility Index"),
-		     :vix => IB::Index.new(:symbol => "VIX",
+		     :vix => IB::Index.new(:symbol => "VIX", exchange: 'CBOE',
                                     :description => "CBOE Volatility Index"),
 				:volume => IB::Index.new( symbol: 'VOL-NYSE', exchange: 'NYSE',
 																	 description: "NYSE Volume Index" ),

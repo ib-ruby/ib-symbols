@@ -2,7 +2,7 @@ require 'integration_helper'
 
 ## todo  test with a real account (with historical data permissions )
 
-describe 'Request Historic Data', :connected => true, :integration => true , focus: true do
+describe 'Request Historic Data', :connected => true, :integration => true  do
 
   CORRECT_OPTS = {:id => 567,
                   :contract => IB::Symbols::Stocks[:wfc],

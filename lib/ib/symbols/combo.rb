@@ -11,11 +11,11 @@ module IB
 					stoxx_straddle: IB::Straddle.build( from: IB::Symbols::Index.stoxx, strike: 3000, 
 																					expiry: IB::Symbols::Futures.next_expiry, trading_class: 'OESX') ,
 				 stoxx_calendar: IB::Calendar.build( from: IB::Symbols::Index.stoxx, strike: 3000, back: '2m' ,
-																					 	expiry: IB::Symbols::Futures.next_expiry, trading_class: 'OESX'),															 
-#				 stoxx_butterfly: IB::Butterfly.make( underlying: Symbols::Index.stoxx, strike: 3000, front: 2950, back: 3050 ),
-				 stoxx_vertical: IB::Vertical.build( from: IB::Symbols::Index.stoxx, sell: 2500, buy: 3000, right: :put, 
+																					 	front: IB::Symbols::Futures.next_expiry, trading_class: 'OESX'),															 
+				 stoxx_butterfly: IB::Butterfly.fabricate( Symbols::Options.stoxx.merge( strike: 3300), front: 3250, back: 3350 ),
+				 stoxx_vertical: IB::Vertical.build( from: IB::Symbols::Index.stoxx, sell: 3000, buy: 3500, right: :put, 
 																							expiry: IB::Symbols::Futures.next_expiry, trading_class: 'OESX'),
-					zn_calendar: IB::Calendar.fabricate( IB::Symbols::Futures.zn, '3m' ),
+					zn_calendar: IB::Calendar.fabricate( IB::Symbols::Futures.zn, '3m') ,
 
 				 dbk_straddle: Bag.new( symbol: 'DBK', currency: 'EUR', exchange: 'DTB', combo_legs:
 												 [  ComboLeg.new( con_id: 270581032 , action: :buy, exchange: 'DTB', ratio: 1),   #DBK Dez20 2018 C 

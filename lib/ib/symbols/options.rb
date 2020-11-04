@@ -6,14 +6,16 @@ module IB
     module Options
       extend Symbols
 
+
+			## usage:  IB::Symbols::Options.stoxx.merge( strike: 3300 )
       def self.contracts
         @contracts ||= {
-					stoxx_3000:  IB::Option.new(  symbol: :Estx50, strike: 3000, 
+					stoxx:  IB::Option.new(  symbol: :ESTX50, strike: 3000, 
 																			  expiry: IB::Symbols::Futures.next_expiry , 
 																				right: :put, 
 																				trading_class: 'OESX', 
 																				currency: 'EUR', exchange: 'DTB',
-																		 description: "ESTX50 3000 Put quarterly"),
+																		 description: "ESTX50 Put Option quarterly"),
 					:ge => IB::Option.new(:symbol => "GE",
 																	:expiry =>  IB::Symbols::Futures.next_expiry, 
 																	:right => "CALL",
@@ -34,12 +36,13 @@ module IB
                                  :right => "CALL",
                                  :strike => 7000.0,
 																 :description => " FTSE-100 index 750 Call 2019-03"),
-			:ibm_lazy_expiry => IB::Option.new( symbol: 'IBM', right: :put, strike: 140,
+			:ibm_lazy_expiry => IB::Option.new( symbol: 'IBM', right: :put, strike: 140, exchange: 'SMART',
 																				 description: 'IBM-Option Chain with strike 140'),
-			:ibm_lazy_strike => IB::Option.new( symbol: 'IBM', right: :put, expiry: IB::Symbols::Futures.next_expiry ,
+			:ibm_lazy_strike => IB::Option.new( symbol: 'IBM', exchange: 'SMART', right: :put, expiry: IB::Symbols::Futures.next_expiry ,
 																				 description: 'IBM-Option Chain ( quarterly expiry)'),
 
 	    :goog1100 => IB::Option.new( symbol: 'GOOG',
+					currency: 'USD',
 				  strike: 1100,
 				  multiplier: 100,
 				  right: :call,
@@ -66,9 +69,9 @@ module IB
                                    :expiry => IB::Symbols::Futures.next_expiry,
                                    :right => "P",
                                    :currency => "USD",
-																	 :exchange => 'GLOBEX',
+																	 :exchange => 'SMART',
                                    :strike => 350,
-                                   :description => "SPY 75.0 Put next expiration"),
+                                   :description => "SPY 350 Put next expiration"),
 #          :spy270 => IB::Option.new(:osi => 'SPY 190315P002700000'),
 #          :vix20 => IB::Option.new(:osi =>  'VIX 181121C00020000'),
 #          :vxx40 => IB::Option.new(:osi =>  'VXX 181117C00040000'),

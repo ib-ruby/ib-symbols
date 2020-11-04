@@ -16,9 +16,22 @@ OPTS ||= {
   :verbose => false, #true, # Run test suite in a verbose mode ?
 }
 
+# read items from spec.yml 
+read_yml = -> (key) do
+		YAML::load_file( File.expand_path('../spec.yml',__FILE__))[key]
+end
 
+
+# Configure settings from connect.yml
+OPTS[:connection] = read_yml[:connection]
+ACCOUNT =  OPTS[:connection][:account]   # shortcut for active account (orders portfolio_values ect.)
+SAMPLE =  IB::Stock.new read_yml[:stock]
 	
 RSpec.configure do |config|
+
+  puts "Running specs with OPTS:"
+  pp OPTS
+
 
 
 	# ermöglicht die Einschränkung der zu testenden Specs
@@ -29,7 +42,6 @@ RSpec.configure do |config|
 	#them with :focus metadata. When no example or groups are focused (which should be
 	#the norm since it's intended to be a temporary change), the filter will be ignored.
 	#
-  #config.filter_run_including focus: true
 	
 	#RSpec also provides aliases--fit, fdescribe and fcontext--as a shorthand for
 	#it, describe and context with :focus metadata, making it easy to temporarily

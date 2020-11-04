@@ -1,5 +1,5 @@
 require 'main_helper'
-require 'contract_helper'  # provides request_con_id
+
 
 RSpec.shared_examples 'ContractData Message' do 
 	subject{ the_message }

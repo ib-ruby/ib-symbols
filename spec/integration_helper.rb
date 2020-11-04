@@ -1,12 +1,5 @@
 require 'account_helper'
 
-# read items from spec.yml 
-read_yml = -> (key) do
-		YAML::load_file( File.expand_path('../spec.yml',__FILE__))[key]
-end
-# Configure settings from connect.yml
-OPTS[:connection] = read_yml[:connection]
-ACCOUNT =  OPTS[:connection][:account]   # shortcut for active account (orders portfolio_values ect.)
 
 RSpec.shared_examples_for 'Received Market Data' do  | request_id |
   context IB::Messages::Incoming::Alert  do
