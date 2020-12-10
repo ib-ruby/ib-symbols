@@ -1,8 +1,15 @@
-# ib-symbols
+# IB-Symbols
 
-Predefined symbols and watchlists for contracts
+---
+__Documentation: [https://ib-ruby.github.io/ib-doc/](https://ib-ruby.github.io/ib-doc/)__  
 
-to activate use
+__Questions, Contributions, Remarks: [Discussions are opened in ib-api](https://github.com/ib-ruby/ib-api/discussions)__
+
+---
+
+__Predefined symbols and watchlists for contracts__
+
+To activate use
 
 ```
 gem 'ib-symbols'
