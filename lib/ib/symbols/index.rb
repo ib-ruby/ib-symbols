@@ -6,7 +6,7 @@ module IB
 
       def self.contracts
 	   @contracts.presence ||  super.merge( 
-		     :dax => IB::Index.new(:symbol => "DAX", :currency => "EUR", exchange: 'DTB',
+		     :dax => IB::Index.new(:symbol => "DAX", :currency => "EUR", exchange: 'EUREX',
                                     :description => "DAX Performance Index."),
 				 :asx => IB::Index.new( :symbol  => 'AP', :currency => 'AUD', exchange: 'ASX',
 																		:description => "ASX 200 Index" ),
@@ -14,7 +14,7 @@ module IB
 																		:description => "Hang Seng Index" ),
 				 :minihsi => IB::Index.new( :symbol  => 'MHI', :currency => 'HKD', exchange: 'HKFE',
 																		:description => "Mini Hang Seng Index" ),
-		     :stoxx => IB::Index.new(:symbol => "ESTX50", :currency => "EUR", exchange: 'DTB',
+		     :stoxx => IB::Index.new(:symbol => "ESTX50", :currency => "EUR", exchange: 'EUREX',
                                     :description => "Dow Jones Euro STOXX50"),
 		     :spx => IB::Index.new(:symbol => "SPX", :currency => "USD", exchange: 'CBOE',
                                     :description => "Dow Jones Euro STOXX50"),
@@ -22,9 +22,9 @@ module IB
 																		:description => "Hang Seng Volatility Index"),
 				 :vasx  =>  IB::Index.new( symbol: 'XVI',   exchange: 'ASX',
 																		:description => "ASX 200 Volatility Index")	, 													
-		     :vstoxx => IB::Index.new(:symbol => "V2TX", :currency => "EUR", exchange: 'DTB',
+		     :vstoxx => IB::Index.new(:symbol => "V2TX", :currency => "EUR", exchange: 'EUREX',
                                     :description => "VSTOXX Volatility Index"),
-		     :vdax => IB::Index.new(:symbol => "VDAX", exchange: 'DTB',
+		     :vdax => IB::Index.new(:symbol => "VDAX", exchange: 'EUREX',
                                     :description => "German VDAX Volatility Index"),
 		     :vix => IB::Index.new(:symbol => "VIX", exchange: 'CBOE',
                                     :description => "CBOE Volatility Index"),

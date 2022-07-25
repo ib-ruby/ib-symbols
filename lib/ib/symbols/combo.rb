@@ -17,7 +17,7 @@ module IB
 																							expiry: IB::Symbols::Futures.next_expiry, trading_class: 'OESX'),
 					zn_calendar: IB::Calendar.fabricate( IB::Symbols::Futures.zn, '3m') ,
 
-				 dbk_straddle: Bag.new( symbol: 'DBK', currency: 'EUR', exchange: 'DTB', combo_legs:
+				 dbk_straddle: Bag.new( symbol: 'DBK', currency: 'EUR', exchange: 'EUREX', combo_legs:
 												 [  ComboLeg.new( con_id: 270581032 , action: :buy, exchange: 'DTB', ratio: 1),   #DBK Dez20 2018 C 
 													ComboLeg.new( con_id: 270580382,  action: :buy, exchange: 'DTB', ratio: 1 ) ], #DBK Dez 20 2018 P
 													 description: 'Option Straddle: Deutsche Bank(20)[Dez 2018]'

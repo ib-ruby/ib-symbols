@@ -14,7 +14,7 @@ module IB
 																			  expiry: IB::Symbols::Futures.next_expiry , 
 																				right: :put, 
 																				trading_class: 'OESX', 
-																				currency: 'EUR', exchange: 'DTB',
+																				currency: 'EUR', exchange: 'EUREX',
 																		 description: "ESTX50 Put Option quarterly"),
 					:ge => IB::Option.new(:symbol => "GE",
 																	:expiry =>  IB::Symbols::Futures.next_expiry, 
