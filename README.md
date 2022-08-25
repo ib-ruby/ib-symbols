@@ -5,6 +5,8 @@ __Documentation: [https://ib-ruby.github.io/ib-doc/](https://ib-ruby.github.io/i
 
 __Questions, Contributions, Remarks: [Discussions are opened in ib-api](https://github.com/ib-ruby/ib-api/discussions)__
 
+__Note: In July 2022 IB changed the exchange for german (and swiss) assets to »EUREX«.__ (Version 1.2)
+
 ---
 
 __Predefined symbols and watchlists for contracts__
