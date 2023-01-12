@@ -21,7 +21,7 @@ module IB
 				 :vhsi =>  IB::Index.new( symbol: 'VHSI', exchange: 'HKFE',
 																		:description => "Hang Seng Volatility Index"),
 				 :vasx  =>  IB::Index.new( symbol: 'XVI',   exchange: 'ASX',
-																		:description => "ASX 200 Volatility Index")	, 													
+																		:description => "ASX 200 Volatility Index")	,
 		     :vstoxx => IB::Index.new(:symbol => "V2TX", :currency => "EUR", exchange: 'EUREX',
                                     :description => "VSTOXX Volatility Index"),
 		     :vdax => IB::Index.new(:symbol => "VDAX", exchange: 'EUREX',
