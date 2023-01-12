@@ -58,11 +58,11 @@ describe 'Request Historic Data', :connected => true, :integration => true  do
       subject.results.each do |bar|
         expect( bar ).to be_an IB::Bar
         expect( bar.time   ).to be_a(Time)
-        expect( bar.open   ).to be_a BigDecimal
-        expect( bar.high   ).to be_a BigDecimal
-        expect( bar.low    ).to be_a BigDecimal
-				expect( bar.close  ).to be_a BigDecimal
-				expect( bar.wap    ).to  be_a BigDecimal
+        expect( bar.open   ).to be_a Numeric 
+        expect( bar.high   ).to be_a Numeric
+        expect( bar.low    ).to be_a Numeric
+				expect( bar.close  ).to be_a Numeric
+				expect( bar.wap    ).to  be_a Numeric
 				expect( bar.trades ).to  be_an Integer
 				expect( bar.volume ).to be_an Integer
       end

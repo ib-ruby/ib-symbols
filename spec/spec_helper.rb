@@ -25,8 +25,9 @@ end
 # Configure settings from connect.yml
 OPTS[:connection] = read_yml[:connection]
 ACCOUNT =  OPTS[:connection][:account]   # shortcut for active account (orders portfolio_values ect.)
-SAMPLE =  IB::Stock.new read_yml[:stock]
-	
+SAMPLE =  IB::Stock.new symbol: read_yml[:stock]
+
+puts "CONN: #{OPTS[:connection].inspect}"
 RSpec.configure do |config|
 
   puts "Running specs with OPTS:"

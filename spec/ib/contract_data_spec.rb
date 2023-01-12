@@ -5,7 +5,7 @@ RSpec.shared_examples 'ContractData Message' do
 	subject{ the_message }
   it { is_expected.to be_an IB::Messages::Incoming::ContractData }
 	its( :contract         ){ is_expected.to be_a  IB::Contract }
-	its( :contract_details ){ is_expected.to be_a  IB::ContractDetail }
+	its( :contract_detail ){ is_expected.to be_a  IB::ContractDetail }
   its( :message_id       ){ is_expected.to eq 10 }
   its( :version          ){ is_expected.to eq 8 }
 	its( :buffer           ){ is_expected.to be_empty }
@@ -28,19 +28,19 @@ RSpec.describe IB::Messages::Incoming::ContractData do
 
     after(:all) { close_connection }
 		
-		it_behaves_like 'ContractData Message' do
-			let( :the_message ){ IB::Connection.current.received[:ContractData].first  }  
-		end
 
 #		it "inspects" do  # debugging
 #			ib = IB::Connection.current
 #			contract =  ib.received[:ContractData].contract.first
-#			contract_details =  ib.received[:ContractData].contract_details.first
-#
 #			puts contract.inspect
+#			contract_details =  ib.received[:ContractData].contract_detail.first
+#
 #			puts contract_details.inspect
 #		end
 
+		it_behaves_like 'ContractData Message' do
+			let( :the_message ){ IB::Connection.current.received[:ContractData].first  }  
+		end
 	end
 end # describe IB::Messages:Incoming
 

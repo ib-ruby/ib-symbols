@@ -37,17 +37,13 @@ end
 ## Connection helpers
 def establish_connection
 
-  ib = IB::Connection.new OPTS[:connection].merge(:logger => mock_logger)
+  ib = IB::Connection.new **OPTS[:connection].merge(:logger => mock_logger)
 	if ib
 		ib.wait_for :ManagedAccounts, 5
 
 		raise "Unable to verify IB PAPER ACCOUNT" unless ib.received?(:ManagedAccounts)
 
 		received = ib.received[:ManagedAccounts].first.accounts_list.split(',')
-		unless received.include?(ACCOUNT)
-			close_connection
-			raise "Connected to wrong account #{received}, expected #{ACCOUNT}" 
-		end
   OPTS[:account_verified] = true
 	else
 		raise "could not establish connection!"

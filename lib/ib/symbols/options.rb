@@ -6,7 +6,6 @@ module IB
     module Options
       extend Symbols
 
--)
 			## usage:  IB::Symbols::Options.stoxx.merge( strike: 3300, expiry: 202304 )
       def self.contracts
         @contracts ||= {

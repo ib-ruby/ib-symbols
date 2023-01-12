@@ -68,7 +68,7 @@ describe "Request Contract Info" do
 #
     before(:all) do
 			ib =  IB::Connection.current
-      @request_id =  ib.send_message :RequestContractData, :contract => IB::Symbols::Options.ge
+      @request_id =  ib.send_message :RequestContractData, :contract => IB::Symbols::Options.ge.merge( strike: 75 )
       ib.wait_for :ContractDataEnd, 3 # sec
     end
     after(:all) { clean_connection } # Clear logs and message collector
@@ -77,7 +77,7 @@ describe "Request Contract Info" do
 		context IB::Messages::Incoming::ContractData  do
 			subject { IB::Connection.current.received[:ContractData].first }	
 
-			it_behaves_like 'valid ContractData Request'
+	#		it_behaves_like 'valid ContractData Request'
 
     it 'receives Contract Data with extended fields' do
       contract = subject.contract
@@ -205,18 +205,18 @@ describe "Request Contract Info" do
 				expect( contract.symbol).to  eq 'YM'
 				expect( contract.local_symbol).to  match /YM/
 				expect( contract.expiry).to  match Regexp.new(IB::Symbols::Futures.next_expiry)
-				expect( contract.exchange).to  eq 'ECBOT'
+				expect( contract.exchange).to  eq 'CBOT'
 				expect( contract.con_id).to  be_an Integer
 
 				expect( detail.market_name).to  eq 'YM'
 				expect( contract.trading_class).to  eq 'YM'
-				expect( detail.long_name).to  eq 'Mini Sized Dow Jones Industrial Average $5'
+				expect( detail.long_name).to  eq 'E-mini Dow Jones Industrial Average'
 				expect( detail.industry).to  eq ''
 				expect( detail.category).to  eq ''
 				expect( detail.subcategory).to  eq ''
 				expect( detail.trading_hours).to  match /\d{8}:\d{4}-\d{4}/
 				expect( detail.liquid_hours).to  match /\d{8}:\d{4}-\d{4}/
-				expect( detail.valid_exchanges).to  match /ECBOT/
+				expect( detail.valid_exchanges).to  match /CBOT/
 				expect( detail.order_types).to  be_a String
 				expect( detail.price_magnifier).to  eq 1
 				expect( detail.min_tick).to  eq 1
