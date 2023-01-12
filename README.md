@@ -5,10 +5,7 @@ __Documentation: [https://ib-ruby.github.io/ib-doc/](https://ib-ruby.github.io/i
 
 __Questions, Contributions, Remarks: [Discussions are opened in ib-api](https://github.com/ib-ruby/ib-api/discussions)__
 
-__Note: In July 2022 IB changed the exchange for german (and swiss) assets to »EUREX«.__ (Version 1.2)
-
 ---
-
 __Predefined symbols and watchlists for contracts__
 
 To activate use
@@ -25,6 +22,42 @@ in your script
 
 ---
 
+## Handy Templates
+
+`IB::Symbols::Index`, `IB::Symbols::Futures` and `IB::Symbols::Options` contain most popular contracts.
+
+To list the predefined contracts use
+```ruby
+Symbols::Options.all.each{|y| puts [y,Symbols::Options.send(y).to_human].join( "\t")}
+aapl	<Option: AAPL 202303 call 130.0 SMART USD>
+ge	<Option: GE 202303 call 7.0 SMART USD>
+goog100	<Option: GOOG 202303 call 100.0  USD>
+ibm	<Option: IBM 202303 put 0.0 SMART >
+ibm_lazy_expiry	<Option: IBM  put 140.0 SMART >
+ibm_lazy_strike	<Option: IBM 202303 put 0.0 SMART >
+    ...
+    
+Symbols::Futures.all.each{|y| puts [y ,Symbols::Futures.send(y).verify.to_human].join "\t" }
+dax	<Future: DAX 20230317 EUR>
+es	<Future: ES 20230317 USD>
+eur	<Future: EUR 20230313 USD>
+gbp	<Future: GBP 20230313 USD>
+hsi	<Future: HSI 20230330 HKD>
+jpy	<Future: JPY 20230313 USD>
+   ...
+
+```
+The expiry is set to the next monthly or quaterly option/future expiration date. Most options are defined
+without a strike. To specify a »real« contract use the merge method:
+
+```ruby
+stoxx_option = IB::Symbols::Option.stoxx.merge( expiry: 202306, strike: 3950, right: :call )
+```
+
+
+## Watchlists
+
+
 The GUI-Version of the TWS organizes symbols in different pages (Watchlists). 
 
 **`IB-Ruby`** uses the same concept to organize and optimize operational issues and to support research and systematic trading efforts. The lists are organized as `Enumerator`, which extents its use. This feature lives entirely in the filesystem, no database is required, no further dependency is involved.
@@ -38,7 +71,7 @@ By default, Watchlists reside in the `symbols`-directory of `ib-symbols`. This c
 ```
 
 
-## Symbol Collections
+### Symbol Collections
 Everything is kept elementary simple: Collections are stored as editable files. The format is YAML. 
 
 The CRUD Cycle
@@ -62,46 +95,8 @@ head :012 > IB::Symbols::Demo.all
  => [] 
 ```
 
-## Predefined Collections
-
-Most popular `Stocks`, `Options`, `Futures`, `Indices` and `Forex-pairs` are hard-coded.
-```ruby
-> IB::Symbols::Index.all
- => [:a_d, :asx, :dax, :hsi, :minihsi, :spx, :stoxx, :tick, :trin, :vasx, :vdax, :vhsi, :vix, :volume, :vstoxx] 
-> puts IB::Symbols::Index.contracts.values &.to_human
-  <Index: DAX EUR (DAX Performance Index.) >
-  <Index: AP AUD (ASX 200 Index) >
-  <Index: HSI HKD (Hang Seng Index) >
-  (...)
-  <Index: AD-NYSE  (NYSE Advance Decline Index) >
-
-> Symbols::Forex.eurusd.to_human
- => "<Contract: EUR forex IDEALPRO USD>"
-# this contract is valid and can be verified, but the opposide is not supported by IB
-> Symbols::Forex.usdeur.verify
-TWS Error 200: No security definition has been found for the request
-Not a valid Contract :: <Contract: USD forex IDEALPRO EUR>
-```
-
-## Pattern based Contract retrieval
-
-To specify a specific Option can be a boaring job. 
-You might spend hours searching for a simple error, like a forgotten `:currency` oder `:exchange` entry.
-
-Symbol-Collections can be used as template for everyday searches.
-
-> Example: Customize a Index-Option with quaterly expiry.
->
-> The hard coded `Symbols::Options.stoxx` template ensures the retrieval of only one option.
-> A simple merge with customized attributes  returns a fully qualified ContractRecord.
-
-
-```ruby
-> IB::Symbols.Options.stoxx.to_human
- => "<Option: ESTX50 202012 put 3000.0 DTB EUR>" 
-> Symbols::Options.stoxx.merge( strike: 3300, right: :call).to_human
- => "<Option: ESTX50 202012 call 3300.0 DTB EUR>" 
 
 ```
+
 
 
