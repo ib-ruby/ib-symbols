@@ -143,7 +143,7 @@ module IB
                                   :description => "Euro FX future"),
          :jpy => IB::Future.new(:symbol => "JPY",
                                   :expiry => next_expiry,
-                                  :exchange => "CME
+                                  :exchange => "CME",
                                   :currency => "USD",
                                   :multiplier => 12500000,
                                   :description => "Japanese Yen future"),
