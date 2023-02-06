@@ -17,7 +17,7 @@ module IB
 		     :stoxx => IB::Index.new(:symbol => "ESTX50", :currency => "EUR", exchange: 'EUREX',
                                     :description => "Dow Jones Euro STOXX50"),
 		     :spx => IB::Index.new(:symbol => "SPX", :currency => "USD", exchange: 'CBOE',
-                                    :description => "Dow Jones Euro STOXX50"),
+                                    :description => "S&P 500 Stock Index"),
 				 :vhsi =>  IB::Index.new( symbol: 'VHSI', exchange: 'HKFE',
 																		:description => "Hang Seng Volatility Index"),
 				 :vasx  =>  IB::Index.new( symbol: 'XVI',   exchange: 'ASX',
