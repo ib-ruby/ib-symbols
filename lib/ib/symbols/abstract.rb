@@ -91,7 +91,7 @@ Returns count of created bunches
 
 	def read_collection
 		if  yml_file.exist?
-			contracts.merge! YAML.load_file yml_file rescue contracts
+			contracts.merge! YAML.unsafe_load_file yml_file rescue contracts
 		else
 			 yml_file.open( "w"){}
 		end
