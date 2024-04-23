@@ -31,7 +31,7 @@ end
 
 def common_option stock, strike
   # returns a real put-Option of the given stock
-   IB::Option.new( symbol: stock.symbol, currency: stock.currency, exchange: 'SMART', strike: strike, right: :put, expiry: IB::Symbols::Futures.next_expiry).verify.first
+  IB::Option.new( symbol: stock.symbol, currency: stock.currency, exchange: 'SMART', strike: strike, right: :put).next_expiry
 end
 
 RSpec.shared_examples 'a valid Estx Combo' do

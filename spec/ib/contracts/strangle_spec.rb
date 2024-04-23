@@ -17,8 +17,8 @@ RSpec.describe "IB::Strangle" do
     close_connection
   end
 
-	context "fabricate with master-option",  pending: true do
-		subject { IB::Strangle.fabricate IB::Symbols::Options.stoxx.merge( strike: PUT ), 200 }
+	context "fabricate with master-option" do
+    subject { IB::Strangle.fabricate IB::Symbols::Options.stoxx.merge( strike: PUT ).next_expiry, 200 }
 		it{ is_expected.to be_a IB::Bag }
 		it_behaves_like 'a valid Estx Combo'
 	end
@@ -44,7 +44,7 @@ RSpec.describe "IB::Strangle" do
 		it_behaves_like 'a valid ES-FUT Combo'
 
 	end
-			
+
 	context "fabricated with FutureOption" do
 		subject do
 			fo = IB::Strangle.build( from: IB::Symbols::Futures.es, p: PUT_ES, c: CALL_ES).legs.first
