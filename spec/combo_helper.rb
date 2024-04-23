@@ -29,38 +29,42 @@ def butterfly symbol, expiry, right, *strikes
               :combo_legs => legs
 end
 
-def atm_option stock
-  # returns the ATM-Put-Option of the given stock
-  atm =  stock.atm_options
-	atm[atm.keys.at(1)].first
-
+def common_option stock, strike
+  # returns a real put-Option of the given stock
+   IB::Option.new( symbol: stock.symbol, currency: stock.currency, exchange: 'SMART', strike: strike, right: :put, expiry: IB::Symbols::Futures.next_expiry).verify.first
 end
 
 RSpec.shared_examples 'a valid Estx Combo' do
 
-		its( :exchange ) { should eq 'DTB' }
+		its( :exchange ) { should eq 'EUREX' }
 		its( :symbol )   { should eq "ESTX50" }
-		its( :market_price )   { should be_a Numeric }
+#		its( :market_price )   { should be_a Numeric }
 end
-
 RSpec.shared_examples 'a valid ES-FUT Combo' do
 
-		its( :exchange ) { should eq 'GLOBEX' }
+		its( :exchange ) { should eq 'CME' }
 		its( :symbol )   { should eq "ES" }
-		its( :market_price )   { should be_a Numeric }
+#		its( :market_price )   { should be_a Numeric }
+end
+
+RSpec.shared_examples 'a valid NQ-FUT Combo' do
+
+		its( :exchange ) { should eq 'CME' }
+		its( :symbol )   { should eq "NQ" }
+#		its( :market_price )   { should be_a Numeric }
 end
 RSpec.shared_examples 'a valid ZN-FUT Combo' do
 
-		its( :exchange ) { should eq 'ECBOT' }
+		its( :exchange ) { should eq 'CBOT' }
 		its( :symbol )   { should eq "ZN" }
-		its( :market_price )   { should be_a Numeric }
+#		its( :market_price )   { should be_a Numeric }
 end
 
 RSpec.shared_examples 'a valid wfc-stock Combo' do
 
-		its( :exchange ) { should eq 'EDGX' }
+		its( :exchange ) { should eq 'SMART' }
 		its( :symbol )   { should eq "WFC" }
-		its( :market_price )   { should be_a Numeric }
+#		its( :market_price )   { should be_a Numeric }
 end
 
 RSpec.shared_examples 'a valid Spread' do

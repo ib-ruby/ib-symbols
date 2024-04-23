@@ -2,10 +2,11 @@
 :connection:
  :port: 7496
    # 4002 # 7497 or 4001 / 7496
- :host: 127.0.0.1
+ :host: 10.247.8.109
  :client_id: 2111
  :base_currency: EUR
  :reuters: false
- :account: U1274612 #DU167348   # Set this to your Paper Account Number
+ :account: U127461 #2DU4035278   # Set this to your Paper Account Number
+   #:account: U1274612 #DU167348   # Set this to your Paper Account Number
 
 

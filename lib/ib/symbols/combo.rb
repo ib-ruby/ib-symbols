@@ -8,13 +8,16 @@ module IB
 			def self.contracts
 
 				@contracts ||= { #super.merge(
-          stoxx_straddle: IB::Straddle.build( from: IB::Symbols::Index.stoxx, strike: 4000,
-                                             expiry: IB::Symbols::Futures.next_expiry, trading_class: 'OESX') ,
-          stoxx_calendar: IB::Calendar.build( from: IB::Symbols::Index.stoxx, strike: 4000, back: '2m' ,
-                                             front: IB::Symbols::Futures.next_expiry, trading_class: 'OESX'),
-         stoxx_butterfly: IB::Butterfly.fabricate( Symbols::Options.stoxx.merge( strike: 3900), front: 3500, back: 4300 ),
-          stoxx_vertical: IB::Vertical.build( from: IB::Symbols::Index.stoxx, sell: 3500, buy: 4000, right: :put,
-                                            expiry: IB::Symbols::Futures.next_expiry, trading_class: 'OESX'),
+          stoxx_straddle: IB::Straddle.build( from: IB::Symbols::Index.stoxx, strike: 5000,
+                                             expiry: IB::Option.next_expiry, trading_class: 'OESX' ) ,
+          stoxx_calendar: IB::Calendar.build( from: IB::Symbols::Index.stoxx, strike: 5000, back: '2m' ,
+                                             front: IB::Option.next_expiry, trading_class: 'OESX' ),
+         stoxx_butterfly: IB::Butterfly.fabricate( IB::Symbols::Options.stoxx.merge( strike: 4900 ),
+                                                   front: 4500, back: 5300,
+                                                   expiry: IB::Option.next_expiry
+                                                 ),
+          stoxx_vertical: IB::Vertical.build( from: IB::Symbols::Index.stoxx, sell: 4500, buy: 5000, right: :put,
+                                            expiry: IB::Option.next_expiry, trading_class: 'OESX'),
              zn_calendar: IB::Calendar.fabricate( IB::Symbols::Futures.zn, '3m') ,
 
              dbk_straddle: Bag.new( symbol: 'DBK', currency: 'EUR', exchange: 'EUREX', combo_legs:

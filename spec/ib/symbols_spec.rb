@@ -7,11 +7,11 @@ RSpec.describe IB::Symbols do
 
 
 	context Module do
-		before(:all) do 
-			ii= IB::Symbols.allocate_collection :Test 
+		before(:all) do
+			ii= IB::Symbols.allocate_collection :Test
       ii.purge_collection
 			# allocate empty allocation
-			IB::Symbols.allocate_collection :Test 
+			IB::Symbols.allocate_collection :Test
 		end
 		subject { IB::Symbols.allocate_collection :Test }
 
@@ -24,7 +24,6 @@ RSpec.describe IB::Symbols do
 
 		it '#read_collection' do
 			expect { subject.read_collection }.not_to change { subject.contracts }
-			
 		end
 
 
@@ -41,17 +40,17 @@ RSpec.describe IB::Symbols do
 		end
 
 	end
-	
+
 	context 'Test.each' do
-		before(:all) do 
-			ii= IB::Symbols.allocate_collection :Test 
-			ii.add_contract :testcontract , IB::Stock.new( symbol: 'GE') 
+		before(:all) do
+			ii= IB::Symbols.allocate_collection :Test
+			ii.add_contract :testcontract , IB::Stock.new( symbol: 'GE')
 		end
 		subject { IB::Symbols::Test.each }
 		it{ is_expected.to be_an Enumerator }
 		its(:size){ is_expected.to be > 0 }
 		its(:first){ is_expected.to be_a IB::Contract }
-		its(:next){ is_expected.to be_a IB::Contract }	
+		its(:next){ is_expected.to be_a IB::Contract }
 		its(:count ){ is_expected.to be  > 0 }  # Enumerator's size --> count
 
 	end

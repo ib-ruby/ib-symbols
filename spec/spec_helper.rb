@@ -5,7 +5,7 @@ require 'rspec'
 require 'rspec/its'
 require 'rspec/collection_matchers'
 require 'rspec/expectations'
-require "ib-api"
+#require "ib-api"
 require "ib/symbols"
 require 'pp'
 require 'yaml'
@@ -27,7 +27,6 @@ OPTS[:connection] = read_yml[:connection]
 ACCOUNT =  OPTS[:connection][:account]   # shortcut for active account (orders portfolio_values ect.)
 SAMPLE =  IB::Stock.new symbol: read_yml[:stock]
 
-puts "CONN: #{OPTS[:connection].inspect}"
 RSpec.configure do |config|
 
   puts "Running specs with OPTS:"
