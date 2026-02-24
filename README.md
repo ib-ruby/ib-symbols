@@ -1,5 +1,7 @@
 # IB-Symbols
 
+**included as plugin in the actual version of ib-api**
+
 ---
 __Documentation: [https://ib-ruby.github.io/ib-doc/](https://ib-ruby.github.io/ib-doc/)__  
 
